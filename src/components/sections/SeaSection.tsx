@@ -197,24 +197,31 @@ export default function SeaSection() {
           ))}
         </div>
 
-        {/* Chef banner — full portrait visible */}
+        {/* Chef — side by side layout to show full portrait */}
         <FadeIn delay={0.2}>
-          <div className="mt-16 relative aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm">
-            <Image
-              src="/chef.jpg"
-              alt="Lo chef al lavoro"
-              fill
-              className="object-cover object-[center_15%]"
-              quality={90}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-10 md:px-20">
-              <div>
-                <p className="font-body text-xs tracking-[0.35em] uppercase text-[#D4A017] mb-4">Il Nostro Chef</p>
-                <p className="font-heading text-3xl md:text-5xl text-white leading-tight max-w-sm">
-                  L'arte di scegliere il pesce giusto
-                </p>
-              </div>
+          <div className="mt-16 grid md:grid-cols-2 gap-0 rounded-sm overflow-hidden bg-[#1C1917]">
+            {/* Text side */}
+            <div className="flex flex-col justify-center px-10 py-16 md:px-16 order-2 md:order-1">
+              <p className="font-body text-xs tracking-[0.35em] uppercase text-[#D4A017] mb-5">
+                Il Nostro Chef
+              </p>
+              <p className="font-heading text-3xl md:text-4xl text-white leading-tight mb-6">
+                L'arte di scegliere il pesce giusto
+              </p>
+              <p className="font-body text-white/60 text-sm leading-[1.9]">
+                Ogni mattina la scelta del pescato è personale. Solo il meglio
+                arriva in cucina — il resto aspetta domani.
+              </p>
+            </div>
+            {/* Photo side — portrait, full height */}
+            <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[500px] order-1 md:order-2">
+              <Image
+                src="/chef.jpg"
+                alt="Lo chef al lavoro"
+                fill
+                className="object-cover object-center"
+                quality={90}
+              />
             </div>
           </div>
         </FadeIn>
