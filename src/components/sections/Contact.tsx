@@ -172,6 +172,92 @@ export default function Contact() {
             </div>
           </FadeIn>
         </div>
+
+        {/* Payment methods */}
+        <FadeIn delay={0.3}>
+          <div className="mt-20 pt-12 border-t border-[#E5E2DC]">
+            <p className="font-body text-xs tracking-[0.35em] uppercase text-[#92700A] mb-10 text-center">
+              Metodi di Pagamento
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+              {[
+                {
+                  label: "Contanti",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+                      <rect x="2" y="6" width="20" height="12" rx="2" />
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M6 12h.01M18 12h.01" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Contactless",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+                      <path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z" strokeDasharray="4 2" />
+                      <path d="M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" fill="currentColor" stroke="none" />
+                      <path d="M8.5 8.5 6 6M15.5 8.5 18 6M8.5 15.5 6 18M15.5 15.5 18 18" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Mastercard",
+                  icon: (
+                    <svg viewBox="0 0 38 24" className="w-10 h-7">
+                      <circle cx="15" cy="12" r="10" fill="#EB001B" />
+                      <circle cx="23" cy="12" r="10" fill="#F79E1B" />
+                      <path d="M19 5.4a10 10 0 0 1 0 13.2A10 10 0 0 1 19 5.4Z" fill="#FF5F00" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "VISA",
+                  icon: (
+                    <svg viewBox="0 0 60 20" className="w-12 h-7">
+                      <text x="0" y="17" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="20" fill="#1A1F71" letterSpacing="-1">VISA</text>
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Carta di debito",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
+                      <rect x="2" y="5" width="20" height="14" rx="2" />
+                      <path d="M2 10h20" />
+                      <path d="M6 15h4" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Apple Pay",
+                  icon: (
+                    <svg viewBox="0 0 50 20" className="w-12 h-7">
+                      <text x="0" y="15" fontFamily="-apple-system, BlinkMacSystemFont, sans-serif" fontSize="14" fill="#1C1917"> Pay</text>
+                    </svg>
+                  ),
+                },
+                {
+                  label: "Maestro",
+                  icon: (
+                    <svg viewBox="0 0 38 24" className="w-10 h-7">
+                      <circle cx="15" cy="12" r="10" fill="#6F6F6F" />
+                      <circle cx="23" cy="12" r="10" fill="#007AC9" fillOpacity="0.85" />
+                      <path d="M19 5.4a10 10 0 0 1 0 13.2A10 10 0 0 1 19 5.4Z" fill="#6F6F6F" fillOpacity="0.5" />
+                    </svg>
+                  ),
+                },
+              ].map((method) => (
+                <div key={method.label} className="flex flex-col items-center gap-2.5">
+                  <div className="text-[#78716C]">{method.icon}</div>
+                  <span className="font-body text-[10px] tracking-wider uppercase text-[#78716C] text-center leading-tight max-w-[60px]">
+                    {method.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

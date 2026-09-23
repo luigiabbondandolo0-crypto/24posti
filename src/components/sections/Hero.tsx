@@ -12,7 +12,7 @@ export default function Hero() {
     <ScrollExpandMedia
       mediaType="image"
       mediaSrc="/chef.jpg"
-      bgImageSrc="/sala.jpg"
+      bgImageSrc="/mare.jpg"
       title="24 POSTI"
       textBlend
     >

@@ -77,14 +77,14 @@ export default function SeaSection() {
           </FadeIn>
         </div>
 
-        {/* Seafood display — wider crop, less zoom */}
+        {/* Seafood display */}
         <FadeIn delay={0.1}>
-          <div className="relative aspect-[21/7] overflow-hidden rounded-sm mb-20 group">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-20 group">
             <Image
               src="/seafood-display.jpg"
               alt="Selezione del pescato"
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              className="object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700"
               quality={90}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/20 to-transparent" />
@@ -125,7 +125,7 @@ export default function SeaSection() {
                 src="/risotto.jpg"
                 alt="Risotto ai gamberi"
                 fill
-                className="object-cover object-[center_60%] group-hover:scale-105 transition-transform duration-700"
+                className="object-cover object-[center_80%] group-hover:scale-105 transition-transform duration-700"
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -197,14 +197,14 @@ export default function SeaSection() {
           ))}
         </div>
 
-        {/* Chef banner — show him properly */}
+        {/* Chef banner — full portrait visible */}
         <FadeIn delay={0.2}>
-          <div className="mt-16 relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm">
+          <div className="mt-16 relative aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm">
             <Image
               src="/chef.jpg"
               alt="Lo chef al lavoro"
               fill
-              className="object-cover object-[center_30%]"
+              className="object-cover object-[center_15%]"
               quality={90}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
