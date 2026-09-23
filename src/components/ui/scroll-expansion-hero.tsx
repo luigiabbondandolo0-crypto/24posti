@@ -83,35 +83,44 @@ const ScrollExpandMedia = ({
     }
   };
 
-  // Lerp animation loop
+  // Lerp animation loop — only runs while animating, stops when settled
   const targetRef = useRef(0);
+  const isAnimatingRef = useRef(false);
+
   const animateLoop = () => {
     const current = progressRef.current;
     const target = targetRef.current;
     const diff = target - current;
 
-    if (Math.abs(diff) > 0.0005) {
-      progressRef.current = current + diff * 0.1;
+    if (Math.abs(diff) > 0.001) {
+      progressRef.current = current + diff * 0.12;
       applyProgress(progressRef.current);
+      rafRef.current = requestAnimationFrame(animateLoop);
     } else {
+      // Settled — stop RAF until next scroll input
       progressRef.current = target;
       applyProgress(target);
-    }
+      isAnimatingRef.current = false;
+      rafRef.current = null;
 
-    // Threshold checks
-    if (progressRef.current >= 0.99 && !fullyExpandedRef.current) {
-      fullyExpandedRef.current = true;
-      setMediaFullyExpanded(true);
-      setShowContent(true);
-    } else if (progressRef.current < 0.75 && fullyExpandedRef.current) {
-      // only reset if scrolling back
+      if (progressRef.current >= 0.99 && !fullyExpandedRef.current) {
+        fullyExpandedRef.current = true;
+        setMediaFullyExpanded(true);
+        setShowContent(true);
+      }
     }
+  };
 
-    rafRef.current = requestAnimationFrame(animateLoop);
+  const startAnim = () => {
+    if (!isAnimatingRef.current) {
+      isAnimatingRef.current = true;
+      rafRef.current = requestAnimationFrame(animateLoop);
+    }
   };
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animateLoop);
+    // Initial render
+    applyProgress(0);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
@@ -124,9 +133,11 @@ const ScrollExpandMedia = ({
         setMediaFullyExpanded(false);
         setShowContent(false);
         e.preventDefault();
+        startAnim();
       } else if (!fullyExpandedRef.current) {
         e.preventDefault();
         targetRef.current = Math.min(Math.max(targetRef.current + e.deltaY * 0.001, 0), 1);
+        startAnim();
       }
     };
 
@@ -142,11 +153,13 @@ const ScrollExpandMedia = ({
         setMediaFullyExpanded(false);
         setShowContent(false);
         e.preventDefault();
+        startAnim();
       } else if (!fullyExpandedRef.current) {
         e.preventDefault();
         const factor = deltaY < 0 ? 0.007 : 0.005;
         targetRef.current = Math.min(Math.max(targetRef.current + deltaY * factor, 0), 1);
         touchStartYRef.current = e.touches[0].clientY;
+        startAnim();
       }
     };
 
