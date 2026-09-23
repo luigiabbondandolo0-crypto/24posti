@@ -8,7 +8,8 @@ interface ScrollExpandMediaProps {
   mediaType?: "video" | "image";
   mediaSrc: string;
   posterSrc?: string;
-  bgImageSrc: string;
+  bgImageSrc?: string;
+  bgGradient?: string;
   title?: string;
   textBlend?: boolean;
   children?: ReactNode;
@@ -19,6 +20,7 @@ const ScrollExpandMedia = ({
   mediaSrc,
   posterSrc,
   bgImageSrc,
+  bgGradient,
   title,
   textBlend,
   children,
@@ -173,16 +175,20 @@ const ScrollExpandMedia = ({
 
           {/* Background */}
           <div ref={bgRef} className="absolute inset-0 z-0 h-full" style={{ willChange: "opacity" }}>
-            <Image
-              src={bgImageSrc}
-              alt="Background"
-              fill
-              className="object-cover object-center"
-              priority
-              quality={90}
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-black/30" />
+            {bgGradient ? (
+              <div className="w-full h-full" style={{ background: bgGradient }} />
+            ) : bgImageSrc ? (
+              <Image
+                src={bgImageSrc}
+                alt="Background"
+                fill
+                className="object-cover object-center"
+                priority
+                quality={90}
+                sizes="100vw"
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-black/25" />
           </div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
