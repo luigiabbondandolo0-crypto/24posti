@@ -173,22 +173,20 @@ const ScrollExpandMedia = ({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
 
-          {/* Background */}
-          <div ref={bgRef} className="absolute inset-0 z-0 h-full" style={{ willChange: "opacity" }}>
-            {bgGradient ? (
-              <div className="w-full h-full" style={{ background: bgGradient }} />
-            ) : bgImageSrc ? (
-              <Image
-                src={bgImageSrc}
-                alt="Background"
-                fill
-                className="object-cover object-center"
-                priority
-                quality={90}
-                sizes="100vw"
-              />
-            ) : null}
-            <div className="absolute inset-0 bg-black/25" />
+          {/* Background — CSS background-image, no next/image complexity */}
+          <div
+            ref={bgRef}
+            className="absolute inset-0 z-0"
+            style={{
+              background: bgGradient
+                ? bgGradient
+                : bgImageSrc
+                ? `url(${bgImageSrc}) center/cover no-repeat`
+                : "#0e3d52",
+              willChange: "opacity",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/30" />
           </div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
