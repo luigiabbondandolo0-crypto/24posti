@@ -12,7 +12,10 @@
       "Bash(C:/Users/luigi/bin/python3 \"C:/Users/luigi/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"fine dining seafood restaurant elegant luxury dark minimal scroll animations\" --design-system --persist -p \"24 Posti\" -f markdown)",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "WebFetch(domain:24posti-9oer6slpv-luigiabbondandolo0-cryptos-projects.vercel.app)"
+      "WebFetch(domain:24posti-9oer6slpv-luigiabbondandolo0-cryptos-projects.vercel.app)",
+      "Bash(curl -L \"https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&q=90&fit=crop\" -o \"C:/Users/luigi/24posti/public/mare.jpg\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -L \"https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&h=1080&fit=crop&crop=top&q=90\" -o \"C:/Users/luigi/24posti/public/mare.jpg\")"
     ]
   }
 }
