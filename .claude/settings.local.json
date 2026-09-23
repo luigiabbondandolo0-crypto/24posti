@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat C:/Users/luigi/24posti/*)",
+      "WebFetch(domain:ventiquattroposti.eatbu.com)",
+      "WebFetch(domain:cdn.website.dish.co)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack)",
+      "Bash(npx shadcn@latest init --defaults)"
+    ]
+  }
+}
