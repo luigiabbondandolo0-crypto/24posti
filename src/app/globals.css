@@ -8,14 +8,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-karla);
   --font-heading: var(--font-playfair);
-  --color-gold: #CA8A04;
-  --color-gold-light: #D4A017;
-  --color-green: #2B5540;
 }
 
 :root {
-  --background: #0D0D0B;
-  --foreground: #FAF9F6;
+  --background: #FAF9F7;
+  --foreground: #1C1917;
   --radius: 0.25rem;
 }
 
@@ -29,15 +26,15 @@
   }
 
   body {
-    background: #0D0D0B;
-    color: #FAF9F6;
+    background: #FAF9F7;
+    color: #1C1917;
     font-family: var(--font-karla), sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-playfair), serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -51,30 +48,23 @@
   }
 
   .text-gold {
-    color: #CA8A04;
-  }
-
-  .bg-gold {
-    background-color: #CA8A04;
-  }
-
-  .border-gold {
-    border-color: #CA8A04;
+    color: #92700A;
   }
 
   .text-muted {
-    color: #9C9990;
-  }
-
-  .bg-surface {
-    background-color: #1C1917;
+    color: #78716C;
   }
 
   .divider-gold {
     width: 3rem;
     height: 1px;
-    background: #CA8A04;
+    background: #92700A;
     display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .bg-warm {
+    background-color: #F0EDE8;
   }
 }
 
@@ -83,9 +73,9 @@
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0D0B;
+  background: #FAF9F7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CA8A04;
+  background: #92700A;
   border-radius: 2px;
 }

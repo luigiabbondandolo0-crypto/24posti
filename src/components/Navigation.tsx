@@ -35,12 +35,11 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#0D0D0B]/95 backdrop-blur-md border-b border-white/5"
+            ? "bg-white/95 backdrop-blur-md border-b border-[#E5E2DC] shadow-sm"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-          {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="cursor-pointer"
@@ -49,19 +48,22 @@ export default function Navigation() {
             <Image
               src="/logo.jpg"
               alt="24 Posti"
-              width={52}
-              height={52}
+              width={48}
+              height={48}
               className="rounded-sm object-cover"
             />
           </button>
 
-          {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-10">
             {links.map((link) => (
               <li key={link.href}>
                 <button
                   onClick={() => handleLink(link.href)}
-                  className="font-body text-sm tracking-widest uppercase text-[#9C9990] hover:text-[#FAF9F6] transition-colors duration-300 cursor-pointer"
+                  className={`font-body text-sm tracking-widest uppercase transition-colors duration-300 cursor-pointer ${
+                    scrolled
+                      ? "text-[#78716C] hover:text-[#1C1917]"
+                      : "text-white/80 hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -69,34 +71,42 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* Reserve CTA */}
           <a
             href="tel:+3908251503257"
-            className="hidden md:flex items-center gap-2 border border-[#CA8A04]/60 text-[#CA8A04] px-5 py-2 text-xs tracking-widest uppercase font-body hover:bg-[#CA8A04] hover:text-[#0D0D0B] transition-all duration-300 cursor-pointer"
+            className={`hidden md:flex items-center gap-2 px-5 py-2 text-xs tracking-widest uppercase font-body transition-all duration-300 cursor-pointer border ${
+              scrolled
+                ? "border-[#92700A] text-[#92700A] hover:bg-[#92700A] hover:text-white"
+                : "border-white/60 text-white hover:bg-white hover:text-[#1C1917]"
+            }`}
           >
             Prenota
           </a>
 
-          {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden flex flex-col gap-1.5 cursor-pointer p-2"
             aria-label="Apri menu"
           >
-            <span
-              className={`block w-6 h-px bg-[#FAF9F6] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
-            />
-            <span
-              className={`block w-6 h-px bg-[#FAF9F6] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`block w-6 h-px bg-[#FAF9F6] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-            />
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className={`block w-6 h-px transition-all duration-300 ${
+                  scrolled ? "bg-[#1C1917]" : "bg-white"
+                } ${
+                  menuOpen && i === 0
+                    ? "rotate-45 translate-y-2"
+                    : menuOpen && i === 1
+                    ? "opacity-0"
+                    : menuOpen && i === 2
+                    ? "-rotate-45 -translate-y-2"
+                    : ""
+                }`}
+              />
+            ))}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -104,7 +114,7 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#0D0D0B]/98 backdrop-blur-md flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-10"
           >
             {links.map((link, i) => (
               <motion.button
@@ -113,14 +123,14 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 onClick={() => handleLink(link.href)}
-                className="font-heading text-3xl tracking-widest text-[#FAF9F6] hover:text-[#CA8A04] transition-colors duration-300 cursor-pointer"
+                className="font-heading text-3xl tracking-widest text-[#1C1917] hover:text-[#92700A] transition-colors duration-300 cursor-pointer"
               >
                 {link.label}
               </motion.button>
             ))}
             <a
               href="tel:+3908251503257"
-              className="mt-4 border border-[#CA8A04]/60 text-[#CA8A04] px-8 py-3 text-sm tracking-widest uppercase font-body"
+              className="mt-4 border border-[#92700A] text-[#92700A] px-8 py-3 text-sm tracking-widest uppercase font-body hover:bg-[#92700A] hover:text-white transition-all duration-300"
             >
               Prenota
             </a>

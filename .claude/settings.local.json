@@ -11,7 +11,8 @@
       "Bash(py --version)",
       "Bash(C:/Users/luigi/bin/python3 \"C:/Users/luigi/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"fine dining seafood restaurant elegant luxury dark minimal scroll animations\" --design-system --persist -p \"24 Posti\" -f markdown)",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "WebFetch(domain:24posti-9oer6slpv-luigiabbondandolo0-cryptos-projects.vercel.app)"
     ]
   }
 }

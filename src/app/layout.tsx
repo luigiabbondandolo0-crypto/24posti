@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="it"
       className={`${playfair.variable} ${karla.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0D0D0B] text-[#FAF9F6]">
+      <body className="min-h-full flex flex-col bg-[#FAF9F7] text-[#1C1917]">
         {children}
       </body>
     </html>
