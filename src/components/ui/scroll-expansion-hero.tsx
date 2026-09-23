@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, ReactNode } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { OceanCanvas } from "./fft-ocean";
 
 interface ScrollExpandMediaProps {
   mediaType?: "video" | "image";
@@ -173,20 +174,14 @@ const ScrollExpandMedia = ({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
 
-          {/* Background — CSS background-image, no next/image complexity */}
+          {/* Background — WebGL animated ocean */}
           <div
             ref={bgRef}
             className="absolute inset-0 z-0"
-            style={{
-              background: bgGradient
-                ? bgGradient
-                : bgImageSrc
-                ? `url(${bgImageSrc}) center/cover no-repeat`
-                : "#0e3d52",
-              willChange: "opacity",
-            }}
+            style={{ willChange: "opacity" }}
           >
-            <div className="absolute inset-0 bg-black/30" />
+            <OceanCanvas />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
