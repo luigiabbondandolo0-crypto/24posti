@@ -14,8 +14,6 @@ export default function Hero() {
       mediaSrc="/chef.jpg"
       bgImageSrc="/sala.jpg"
       title="24 POSTI"
-      date="Avellino · Cucina di Mare"
-      scrollToExpand="Scorri per scoprire"
       textBlend
     >
       <About />
