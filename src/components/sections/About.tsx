@@ -7,13 +7,29 @@ export default function About() {
   return (
     <section id="chi-siamo" className="py-32 md:py-44 px-6 bg-[#FAF9F7]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-        {/* Left — photo */}
+        {/* Left — two photos stacked */}
         <FadeIn direction="right">
-          <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-sm">
+          <div className="relative grid grid-cols-2 gap-3">
+            <div className="col-span-2 relative aspect-[3/2] overflow-hidden rounded-sm">
+              <Image
+                src="/sala.jpg"
+                alt="La sala di 24 Posti"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-sm">
               <Image
                 src="/couple.jpg"
                 alt="I titolari di 24 Posti"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-sm">
+              <Image
+                src="/antipasto-24.jpg"
+                alt="Antipasto 24 Posti"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
               />

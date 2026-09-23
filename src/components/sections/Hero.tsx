@@ -12,13 +12,12 @@ export default function Hero() {
     <ScrollExpandMedia
       mediaType="image"
       mediaSrc="/chef.jpg"
-      bgImageSrc="/couple.jpg"
+      bgImageSrc="/sala.jpg"
       title="24 POSTI"
       date="Avellino · Cucina di Mare"
       scrollToExpand="Scorri per scoprire"
       textBlend
     >
-      {/* All content after hero expansion */}
       <About />
       <SeaSection />
       <Menu />
