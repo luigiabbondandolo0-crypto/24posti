@@ -5,7 +5,13 @@
       "WebFetch(domain:ventiquattroposti.eatbu.com)",
       "WebFetch(domain:cdn.website.dish.co)",
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack)",
-      "Bash(npx shadcn@latest init --defaults)"
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(where python3 *)",
+      "Bash(where python *)",
+      "Bash(py --version)",
+      "Bash(C:/Users/luigi/bin/python3 \"C:/Users/luigi/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"fine dining seafood restaurant elegant luxury dark minimal scroll animations\" --design-system --persist -p \"24 Posti\" -f markdown)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
     ]
   }
 }
