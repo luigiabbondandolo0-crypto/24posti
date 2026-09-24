@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, ReactNode } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { OceanCanvas } from "./fft-ocean";
 
@@ -36,8 +35,6 @@ const ScrollExpandMedia = ({
   const touchStartYRef = useRef(0);
 
   // DOM refs for direct style mutation (no re-render per frame)
-  const mediaBoxRef = useRef<HTMLDivElement>(null);
-  const mediaOverlayRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const word1Ref = useRef<HTMLHeadingElement>(null);
   const word2Ref = useRef<HTMLHeadingElement>(null);
@@ -53,33 +50,26 @@ const ScrollExpandMedia = ({
 
   // Apply progress directly to DOM without React state
   const applyProgress = (p: number) => {
-    const mobile = isMobile;
-    const w = 280 + p * (mobile ? 680 : 1280);
-    const h = 380 + p * (mobile ? 220 : 420);
-    const tx = p * (mobile ? 180 : 160);
-    const br = Math.max(0, 8 - p * 8);
-    const bgOpacity = Math.max(0, 1 - p * 1.5);
-    const textOpacity = Math.max(0, 1 - p * 2.5);
-    const overlayOpacity = Math.max(0, 0.35 - p * 0.35);
+    // Phase 1 (0→0.45): "POSTI" slides in from right
+    const revealP = Math.min(p / 0.45, 1);
+    // Phase 2 (0.45→1): both words + ocean fade out, content appears
+    const exitP = Math.max((p - 0.45) / 0.55, 0);
 
-    if (mediaBoxRef.current) {
-      mediaBoxRef.current.style.width = `${w}px`;
-      mediaBoxRef.current.style.height = `${h}px`;
-      mediaBoxRef.current.style.borderRadius = `${br}px`;
-    }
-    if (mediaOverlayRef.current) {
-      mediaOverlayRef.current.style.background = `rgba(0,0,0,${overlayOpacity})`;
-    }
+    const bgOpacity = Math.max(0, 1 - exitP * 1.6);
+    const word1Opacity = Math.max(0, 1 - exitP * 2.8);
+    const word2Opacity = revealP * Math.max(0, 1 - exitP * 2.8);
+    // Slides in from +22vw → 0
+    const word2SlideX = (1 - revealP) * 22;
+
     if (bgRef.current) {
       bgRef.current.style.opacity = String(bgOpacity);
     }
     if (word1Ref.current) {
-      word1Ref.current.style.transform = `translateX(-${tx}vw)`;
-      word1Ref.current.style.opacity = String(textOpacity);
+      word1Ref.current.style.opacity = String(word1Opacity);
     }
     if (word2Ref.current) {
-      word2Ref.current.style.transform = `translateX(${tx}vw)`;
-      word2Ref.current.style.opacity = String(textOpacity);
+      word2Ref.current.style.opacity = String(word2Opacity);
+      word2Ref.current.style.transform = `translateX(${word2SlideX}vw)`;
     }
   };
 
@@ -200,43 +190,16 @@ const ScrollExpandMedia = ({
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
             <div className="flex flex-col items-center justify-center w-full h-[100dvh] relative">
 
-              {/* Expanding image */}
-              <div
-                ref={mediaBoxRef}
-                className="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden"
-                style={{
-                  width: "280px",
-                  height: "380px",
-                  maxWidth: "95vw",
-                  maxHeight: "90vh",
-                  borderRadius: "8px",
-                  willChange: "width, height, border-radius",
-                }}
-              >
-                {mediaType === "image" ? (
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={mediaSrc}
-                      alt={title || "24 Posti"}
-                      fill
-                      className="object-cover object-center"
-                      priority
-                      quality={90}
-                      sizes="100vw"
-                    />
-                    <div ref={mediaOverlayRef} className="absolute inset-0" style={{ background: "rgba(0,0,0,0.35)" }} />
-                  </div>
-                ) : (
-                  <video src={mediaSrc} poster={posterSrc} autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                )}
-              </div>
-
-              {/* Title */}
-              <div className={`flex items-center justify-center text-center gap-6 w-full relative z-10 flex-col ${textBlend ? "mix-blend-difference" : ""}`}>
+              {/* Title — "24" always visible, "POSTI" slides in on scroll */}
+              <div className="flex items-baseline justify-center gap-[0.18em] w-full relative z-10">
                 <h1
                   ref={word1Ref}
                   className="font-heading leading-none tracking-wider text-white select-none"
-                  style={{ fontSize: "clamp(3rem,10vw,8rem)", willChange: "transform, opacity" }}
+                  style={{
+                    fontSize: "clamp(4rem,13vw,10rem)",
+                    willChange: "opacity",
+                    letterSpacing: "0.06em",
+                  }}
                 >
                   {firstWord}
                 </h1>
@@ -244,7 +207,13 @@ const ScrollExpandMedia = ({
                   <h1
                     ref={word2Ref}
                     className="font-heading leading-none tracking-wider text-white select-none"
-                    style={{ fontSize: "clamp(3rem,10vw,8rem)", willChange: "transform, opacity" }}
+                    style={{
+                      fontSize: "clamp(4rem,13vw,10rem)",
+                      willChange: "transform, opacity",
+                      letterSpacing: "0.06em",
+                      opacity: 0,
+                      transform: "translateX(22vw)",
+                    }}
                   >
                     {restOfTitle}
                   </h1>
