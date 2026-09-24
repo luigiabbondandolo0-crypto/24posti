@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, ReactNode } from "react";
 import { motion } from "framer-motion";
-import { OceanCanvas } from "./fft-ocean";
 
 interface ScrollExpandMediaProps {
   mediaType?: "video" | "image";
@@ -173,14 +172,11 @@ const ScrollExpandMedia = ({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
 
-          {/* Background — WebGL animated ocean (stays visible always) */}
+          {/* Background — neutral warm */}
           <div
             ref={bgRef}
-            className="absolute inset-0 z-0"
-          >
-            <OceanCanvas />
-            <div className="absolute inset-0 bg-black/20" />
-          </div>
+            className="absolute inset-0 z-0 bg-[#FAF9F7]"
+          />
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
             <div className="flex flex-col items-center justify-center w-full h-[100dvh] relative">
@@ -189,7 +185,7 @@ const ScrollExpandMedia = ({
               <div className="flex flex-col items-center justify-center gap-2 w-full relative z-10">
                 <h1
                   ref={word1Ref}
-                  className="font-heading leading-none text-white select-none text-center"
+                  className="font-heading leading-none text-[#1C1917] select-none text-center"
                   style={{
                     fontSize: "clamp(6rem,20vw,16rem)",
                     willChange: "opacity",
@@ -201,7 +197,7 @@ const ScrollExpandMedia = ({
                 {restOfTitle && (
                   <h1
                     ref={word2Ref}
-                    className="font-heading leading-none text-white select-none text-center"
+                    className="font-heading leading-none text-[#92700A] select-none text-center"
                     style={{
                       fontSize: "clamp(2.5rem,8vw,6rem)",
                       willChange: "transform, opacity",
