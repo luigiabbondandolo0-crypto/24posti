@@ -55,8 +55,8 @@ const ScrollExpandMedia = ({
     // Phase 2 (0.5→1): both words fade out, content appears (ocean stays)
     const exitP = Math.max((p - 0.5) / 0.5, 0);
 
-    const word1Opacity = Math.max(0, 1 - exitP * 2.5);
-    const word2Opacity = revealP * Math.max(0, 1 - exitP * 2.5);
+    const word1Opacity = 1;
+    const word2Opacity = revealP;
     // Slides up from +50px → 0
     const word2SlideY = (1 - revealP) * 50;
 
