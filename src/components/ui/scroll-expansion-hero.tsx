@@ -50,26 +50,22 @@ const ScrollExpandMedia = ({
 
   // Apply progress directly to DOM without React state
   const applyProgress = (p: number) => {
-    // Phase 1 (0→0.45): "POSTI" slides in from right
-    const revealP = Math.min(p / 0.45, 1);
-    // Phase 2 (0.45→1): both words + ocean fade out, content appears
-    const exitP = Math.max((p - 0.45) / 0.55, 0);
+    // Phase 1 (0→0.5): "POSTI" slides up from below
+    const revealP = Math.min(p / 0.5, 1);
+    // Phase 2 (0.5→1): both words fade out, content appears (ocean stays)
+    const exitP = Math.max((p - 0.5) / 0.5, 0);
 
-    const bgOpacity = Math.max(0, 1 - exitP * 1.6);
-    const word1Opacity = Math.max(0, 1 - exitP * 2.8);
-    const word2Opacity = revealP * Math.max(0, 1 - exitP * 2.8);
-    // Slides in from +22vw → 0
-    const word2SlideX = (1 - revealP) * 22;
+    const word1Opacity = Math.max(0, 1 - exitP * 2.5);
+    const word2Opacity = revealP * Math.max(0, 1 - exitP * 2.5);
+    // Slides up from +50px → 0
+    const word2SlideY = (1 - revealP) * 50;
 
-    if (bgRef.current) {
-      bgRef.current.style.opacity = String(bgOpacity);
-    }
     if (word1Ref.current) {
       word1Ref.current.style.opacity = String(word1Opacity);
     }
     if (word2Ref.current) {
       word2Ref.current.style.opacity = String(word2Opacity);
-      word2Ref.current.style.transform = `translateX(${word2SlideX}vw)`;
+      word2Ref.current.style.transform = `translateY(${word2SlideY}px)`;
     }
   };
 
@@ -177,11 +173,10 @@ const ScrollExpandMedia = ({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
 
-          {/* Background — WebGL animated ocean */}
+          {/* Background — WebGL animated ocean (stays visible always) */}
           <div
             ref={bgRef}
             className="absolute inset-0 z-0"
-            style={{ willChange: "opacity" }}
           >
             <OceanCanvas />
             <div className="absolute inset-0 bg-black/20" />
@@ -190,15 +185,15 @@ const ScrollExpandMedia = ({
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
             <div className="flex flex-col items-center justify-center w-full h-[100dvh] relative">
 
-              {/* Title — "24" always visible, "POSTI" slides in on scroll */}
-              <div className="flex items-baseline justify-center gap-[0.18em] w-full relative z-10">
+              {/* Title — "24" always visible, "POSTI" slides up from below */}
+              <div className="flex flex-col items-center justify-center gap-2 w-full relative z-10">
                 <h1
                   ref={word1Ref}
-                  className="font-heading leading-none tracking-wider text-white select-none"
+                  className="font-heading leading-none text-white select-none text-center"
                   style={{
-                    fontSize: "clamp(4rem,13vw,10rem)",
+                    fontSize: "clamp(6rem,20vw,16rem)",
                     willChange: "opacity",
-                    letterSpacing: "0.06em",
+                    letterSpacing: "0.08em",
                   }}
                 >
                   {firstWord}
@@ -206,13 +201,13 @@ const ScrollExpandMedia = ({
                 {restOfTitle && (
                   <h1
                     ref={word2Ref}
-                    className="font-heading leading-none tracking-wider text-white select-none"
+                    className="font-heading leading-none text-white select-none text-center"
                     style={{
-                      fontSize: "clamp(4rem,13vw,10rem)",
+                      fontSize: "clamp(2.5rem,8vw,6rem)",
                       willChange: "transform, opacity",
-                      letterSpacing: "0.06em",
+                      letterSpacing: "0.35em",
                       opacity: 0,
-                      transform: "translateX(22vw)",
+                      transform: "translateY(50px)",
                     }}
                   >
                     {restOfTitle}
