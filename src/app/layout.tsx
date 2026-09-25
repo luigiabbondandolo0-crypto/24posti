@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display_SC, Karla } from "next/font/google";
+import { Cormorant_Garamond, Karla } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display_SC({
+const playfair = Cormorant_Garamond({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const karla = Karla({
