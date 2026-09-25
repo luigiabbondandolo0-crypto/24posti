@@ -62,7 +62,7 @@ export default function Navigation() {
                   className={`font-body text-sm tracking-widest uppercase transition-colors duration-300 cursor-pointer ${
                     scrolled
                       ? "text-[#78716C] hover:text-[#1C1917]"
-                      : "text-white/80 hover:text-white"
+                      : "text-[#1C1917]/60 hover:text-[#1C1917]"
                   }`}
                 >
                   {link.label}
@@ -76,7 +76,7 @@ export default function Navigation() {
             className={`hidden md:flex items-center gap-2 px-5 py-2 text-xs tracking-widest uppercase font-body transition-all duration-300 cursor-pointer border ${
               scrolled
                 ? "border-[#92700A] text-[#92700A] hover:bg-[#92700A] hover:text-white"
-                : "border-white/60 text-white hover:bg-white hover:text-[#1C1917]"
+                : "border-[#92700A]/70 text-[#92700A] hover:bg-[#92700A] hover:text-white"
             }`}
           >
             Prenota
@@ -91,7 +91,7 @@ export default function Navigation() {
               <span
                 key={i}
                 className={`block w-6 h-px transition-all duration-300 ${
-                  scrolled ? "bg-[#1C1917]" : "bg-white"
+                  scrolled ? "bg-[#1C1917]" : "bg-[#1C1917]"
                 } ${
                   menuOpen && i === 0
                     ? "rotate-45 translate-y-2"
