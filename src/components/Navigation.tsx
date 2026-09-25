@@ -84,7 +84,7 @@ export default function Navigation() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-1.5 cursor-pointer p-2"
+            className="md:hidden flex flex-col gap-1.5 cursor-pointer p-3 -mr-1"
             aria-label="Apri menu"
           >
             {[0, 1, 2].map((i) => (

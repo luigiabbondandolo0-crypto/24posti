@@ -90,18 +90,18 @@ export default function Menu() {
                 </div>
 
                 {/* Category name — always visible, slides up on hover */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <h3 className="font-heading text-3xl md:text-4xl text-white tracking-wide mb-0 group-hover:mb-3 transition-all duration-400">
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <h3 className="font-heading text-2xl md:text-4xl text-white tracking-wide mb-2 md:mb-0 md:group-hover:mb-3 transition-all duration-400">
                     {cat.name}
                   </h3>
-                  {/* Description — reveals on hover */}
-                  <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500 ease-out">
+                  {/* Description — always visible on mobile, reveals on hover on desktop */}
+                  <div className="overflow-hidden max-h-20 md:max-h-0 md:group-hover:max-h-20 transition-all duration-500 ease-out">
                     <p className="font-body text-sm text-white/75 leading-[1.8] pt-1">
                       {cat.desc}
                     </p>
                   </div>
                   {/* Gold underline */}
-                  <div className="w-0 group-hover:w-10 h-px bg-[#D4A017] transition-all duration-500 ease-out mt-4" />
+                  <div className="w-8 md:w-0 md:group-hover:w-10 h-px bg-[#D4A017] transition-all duration-500 ease-out mt-3 md:mt-4" />
                 </div>
               </div>
             </FadeIn>

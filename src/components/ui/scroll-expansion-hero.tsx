@@ -37,6 +37,7 @@ const ScrollExpandMedia = ({
   const bgRef = useRef<HTMLDivElement>(null);
   const word1Ref = useRef<HTMLHeadingElement>(null);
   const word2Ref = useRef<HTMLHeadingElement>(null);
+  const scrollHintRef = useRef<HTMLDivElement>(null);
 
   const fullyExpandedRef = useRef(false);
 
@@ -65,6 +66,9 @@ const ScrollExpandMedia = ({
     if (word2Ref.current) {
       word2Ref.current.style.opacity = String(word2Opacity);
       word2Ref.current.style.transform = `translateY(${word2SlideY}px)`;
+    }
+    if (scrollHintRef.current) {
+      scrollHintRef.current.style.opacity = String(Math.max(0, 1 - p * 8));
     }
   };
 
@@ -187,7 +191,7 @@ const ScrollExpandMedia = ({
                   ref={word1Ref}
                   className="font-heading leading-none text-[#1C1917] select-none text-center"
                   style={{
-                    fontSize: "clamp(10rem,38vw,32rem)",
+                    fontSize: "clamp(8rem,38vw,32rem)",
                     willChange: "opacity",
                     letterSpacing: "0.06em",
                   }}
@@ -199,7 +203,7 @@ const ScrollExpandMedia = ({
                     ref={word2Ref}
                     className="font-heading leading-none text-[#78716C] select-none text-center"
                     style={{
-                      fontSize: "clamp(2.5rem,9vw,7rem)",
+                      fontSize: "clamp(2rem,9vw,7rem)",
                       willChange: "transform, opacity",
                       letterSpacing: "0.4em",
                       opacity: 0,
@@ -209,6 +213,28 @@ const ScrollExpandMedia = ({
                     {restOfTitle}
                   </h1>
                 )}
+              </div>
+
+              {/* Scroll hint — fades immediately when animation starts */}
+              <div
+                ref={scrollHintRef}
+                className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 pointer-events-none"
+              >
+                <span className="font-body text-[10px] tracking-[0.3em] uppercase text-[#78716C]/60">
+                  Scorri
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-5 h-5 text-[#78716C]/50 animate-bounce"
+                >
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
               </div>
             </div>
 

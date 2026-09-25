@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="chi-siamo" className="py-32 md:py-44 px-6 bg-[#FAF9F7]">
+    <section id="chi-siamo" className="py-32 md:py-44 px-6 bg-[#FAF9F7] overflow-hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
         {/* Left — couple photo only */}
