@@ -15,7 +15,12 @@
       "WebFetch(domain:24posti-9oer6slpv-luigiabbondandolo0-cryptos-projects.vercel.app)",
       "Bash(curl -L \"https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&q=90&fit=crop\" -o \"C:/Users/luigi/24posti/public/mare.jpg\")",
       "Bash(python3 -c ' *)",
-      "Bash(curl -L \"https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&h=1080&fit=crop&crop=top&q=90\" -o \"C:/Users/luigi/24posti/public/mare.jpg\")"
+      "Bash(curl -L \"https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&h=1080&fit=crop&crop=top&q=90\" -o \"C:/Users/luigi/24posti/public/mare.jpg\")",
+      "Bash(python3 \"C:\\\\Users\\\\luigi\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"restaurant reviews testimonials social proof animated elegant italian\" --design-system -p \"24 Posti Reviews\")",
+      "Bash(python \"C:\\\\Users\\\\luigi\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"restaurant reviews testimonials social proof animated elegant italian\" --design-system -p \"24 Posti Reviews\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

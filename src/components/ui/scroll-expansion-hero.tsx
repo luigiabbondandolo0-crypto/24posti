@@ -172,10 +172,10 @@ const ScrollExpandMedia = ({
       <section className="relative flex flex-col items-center justify-start min-h-[100dvh]">
         <div className="relative w-full flex flex-col items-center min-h-[100dvh]">
 
-          {/* Background — dark warm */}
+          {/* Background — cream warm */}
           <div
             ref={bgRef}
-            className="absolute inset-0 z-0 bg-[#1C1917]"
+            className="absolute inset-0 z-0 bg-[#FAF9F7]"
           />
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">
@@ -185,11 +185,11 @@ const ScrollExpandMedia = ({
               <div className="flex flex-col items-center justify-center gap-2 w-full relative z-10">
                 <h1
                   ref={word1Ref}
-                  className="font-heading leading-none text-[#FAF9F7] select-none text-center"
+                  className="font-heading leading-none text-[#1C1917] select-none text-center"
                   style={{
-                    fontSize: "clamp(6rem,20vw,16rem)",
+                    fontSize: "clamp(10rem,38vw,32rem)",
                     willChange: "opacity",
-                    letterSpacing: "0.08em",
+                    letterSpacing: "0.06em",
                   }}
                 >
                   {firstWord}
@@ -197,11 +197,11 @@ const ScrollExpandMedia = ({
                 {restOfTitle && (
                   <h1
                     ref={word2Ref}
-                    className="font-heading leading-none text-[#92700A] select-none text-center"
+                    className="font-heading leading-none text-[#78716C] select-none text-center"
                     style={{
-                      fontSize: "clamp(2.5rem,8vw,6rem)",
+                      fontSize: "clamp(2.5rem,9vw,7rem)",
                       willChange: "transform, opacity",
-                      letterSpacing: "0.35em",
+                      letterSpacing: "0.4em",
                       opacity: 0,
                       transform: "translateY(50px)",
                     }}
